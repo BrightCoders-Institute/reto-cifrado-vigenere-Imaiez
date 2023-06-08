@@ -26,4 +26,6 @@ can create the loop for the grid.
 
 With .delete i can remove the spaces on the message given so it will be able to put everything togheter.
 
-Just create an array tiwht the message given an the ley.
+Just create an array with the message given at the message variable.
+
+Matched the array length: message and key numerical form.

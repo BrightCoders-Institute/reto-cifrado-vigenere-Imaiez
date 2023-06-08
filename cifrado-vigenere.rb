@@ -1,68 +1,59 @@
-# Generar tabla de Vigenere
+# Genera string del alfabeto
 alphabet = 'abcdefghijklmnopqrstuvwxyz'
 
-letter_to_index = Hash[alphabet.chars.zip(0...alphabet.length)] # crea un hash con las letras del alfabeto como :key y  el número de su posición como valor
-index_to_letter = Hash[(0...alphabet.length).zip(alphabet.chars)] #crea un has con el número de la posición de la letra como :key y la letra del alfabeto como valor
-
-# La función matemática del cifrado es la siguiente:
-# Mi = (Mi + Ki) mod L
-# Mi => es el caracter del texto a cifrar en la posición i
-# Ki es el caracter de la palabra clave correspondiente a la letra del mensaje en la posición i
-# mod L es tamaño del alfabeto que en este caso es 26 y se puede representar como % 26
-
-
+# Obtiene el mensaje y la palabra clave
 message = "helloworld"
-key = "secreto"
+key = "key"
 
-# Obtiene un array con las letras del
-split_message = message.chars.inspect
-split_key = key.chars.inspect
+# Crea array del indice para las letras del alfabeto
+  letter_to_index = []
+  alphabet.each_char do |letter|
+    letter_to_index << alphabet.index(letter)
+  end
 
+#  Crea array con las letras del alfabeto de acuerdo a su indice
+  index_to_letter = []
+  index_to_letter << alphabet.chars
 
+# # Convierte el mensaje en su representación númerica
+  index_message = []
+  message.each_char do |message|
+    index_message << alphabet.index(message)
+  end
 
-puts split_message
-puts split_key
+# # Convierte la palabra clave en su representación númerica
+  index_key = []
+  key.each_char do |key|
+    index_key << alphabet.index(key)
+  end
 
+puts index_message.inspect
+puts "\n"
+puts index_key
+puts "\n"
+# # Dividir la matriz del mensaje en pedazos de acuerdo al tamaño de la palabra clave
+if index_key.length < index_message.length
+  key_repeated = (index_message.length / index_key.length.to_f).ceil
+  index_key *= key_repeated
+end
 
-
-
-
-# Aquí debe mapear el mensaje con el número correspondiente del alfabeto en el hash letter_to_index
-# split_message.each do |letter|
-#   cipher_numer = letter_to_index(letter)
-#   puts cipher_number
-# end
-
-
-
-
-# Aquí se encripta el mensaje
-
-# def encrypt(message, key)
-#   encrypted = ''
-#   # Se divide el mensaje a la longitud de la llave
-
-
-#   # Se convierte el mensaje al indice correspondiente y se  agrega la palabra clave
-#   # Se divide por el modulo L
-
-
-#   # Se escribe el mensaje a encriptar
-
-# end
-
-
-# def decrypt(cipher, key)
-#   # Se divide el mensaje ya cifrado al tamaño de la clave
-
-
-#   # Se convierte el mensaje cifrado a su valor en el alfabeto y se le quita la palabra clave por el mod L
-
-
-#   # Se escribe el mensaje descifrado
-# end
+# Asegura que index_key no tenga una longitud mayor a index_message
+index_key = index_key.take(index_message.length)
 
 
 
+puts ("\n")
+puts index_key.inspect
 
 
+
+# encrypted = ""
+# keyword_index = 0
+
+
+#   message.each_char do |char|
+#   shift = keyd[keyword_index].ord - 'A'.ord
+#   encrypted_char = ((char.ord - 'A'.ord + shift) % 26 + 'A'.ord).chr
+#   encrypted << encrypted_char
+
+#   keyword_index = (keyword_index + 1) % keyword.length
