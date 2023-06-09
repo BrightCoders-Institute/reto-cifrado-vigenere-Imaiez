@@ -35,10 +35,9 @@ end
 
 # Asegura que index_key no tenga una longitud mayor a index_message
 index_key = index_key.take(index_message.length)
-
 # Genera matriz con la suma númerica de la matriz mensaje y key.
 index_cipher = []
-index_message.each_with_index do |value, index|
+index_message.each_with_index do |value, index|s
    sum = (value + index_key[index]) % 26
   index_cipher << sum
 end
