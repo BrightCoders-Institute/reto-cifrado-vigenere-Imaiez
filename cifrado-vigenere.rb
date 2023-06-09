@@ -1,10 +1,10 @@
 # Genera string del alfabeto
-alphabet = 'abcdefghijklmnopqrstuvwxyz'
+alphabet = 'abcdefghijklmnopqrstuvwxyz '
 
 # Obtiene el mensaje y la palabra clave
-message = "helloworld"
-key = "key"
-encrypted = ""
+message = "ruby"
+key = "code"
+
 # Crea array del indice para las letras del alfabeto
   letter_to_index = []
   alphabet.each_char do |letter|
@@ -27,9 +27,6 @@ encrypted = ""
     index_key << alphabet.index(key)
   end
 
-# puts index_message.inspect
-
-# puts "\n"
 # # Dividir la matriz del mensaje en pedazos de acuerdo al tamaño de la palabra clave
 if index_key.length < index_message.length
   key_repeated = (index_message.length / index_key.length.to_f).ceil
@@ -39,57 +36,28 @@ end
 # Asegura que index_key no tenga una longitud mayor a index_message
 index_key = index_key.take(index_message.length)
 
+# Genera matriz con la suma númerica de la matriz mensaje y key.
 index_cipher = []
-
 index_message.each_with_index do |value, index|
    sum = (value + index_key[index]) % 26
   index_cipher << sum
 end
 
-# cipher_mesage = []
-# index_cipher.each do |value|
-#   index_to_letter.each do |letter|
-#     cipher_letter = alphabet.index(letter)
-#     cipher_mesage << cipher_letter
-#   end
-# end
-
-cipher_mesage = []
+# Devuelve la clave númerica en el mensaje cifrado.
+cipher_message = []
 index_cipher.each do |index|
   cipher_letter = 0
   alphabet.each_char do |letter|
     cipher_letter = alphabet[index]
   end
-  cipher_mesage << cipher_letter
+  cipher_message << cipher_letter
 end
+encrypted_message = cipher_message.join
 
 
+puts message
+puts "\n"
+puts key
+puts "\n"
+puts encrypted_message
 
-
-# puts index_to_letter
-# puts ("\n")
-
-
-
-
-puts index_to_letter
-puts ("\n")
-
-puts index_message.inspect
-puts ("\n")
-puts index_key.inspect
-puts ("\n")
-puts index_cipher.inspect
-puts ("\n")
-puts cipher_mesage.join
-
-# encrypted = ""
-# keyword_index = 0
-
-
-#   message.each_char do |char|
-#   shift = keyd[keyword_index].ord - 'A'.ord
-#   encrypted_char = ((char.ord - 'A'.ord + shift) % 26 + 'A'.ord).chr
-#   encrypted << encrypted_char
-
-#   keyword_index = (keyword_index + 1) % keyword.length
