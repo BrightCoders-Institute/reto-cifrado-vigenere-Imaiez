@@ -46,23 +46,42 @@ index_message.each_with_index do |value, index|
   index_cipher << sum
 end
 
+# cipher_mesage = []
+# index_cipher.each do |value|
+#   index_to_letter.each do |letter|
+#     cipher_letter = alphabet.index(letter)
+#     cipher_mesage << cipher_letter
+#   end
+# end
+
+cipher_mesage = []
+index_cipher.each do |index|
+  cipher_letter = 0
+  alphabet.each_char do |letter|
+    cipher_letter = alphabet[index]
+  end
+  cipher_mesage << cipher_letter
+end
 
 
 
 
+# puts index_to_letter
+# puts ("\n")
 
 
 
 
-
-
+puts index_to_letter
+puts ("\n")
 
 puts index_message.inspect
 puts ("\n")
 puts index_key.inspect
 puts ("\n")
 puts index_cipher.inspect
-
+puts ("\n")
+puts cipher_mesage.join
 
 # encrypted = ""
 # keyword_index = 0
