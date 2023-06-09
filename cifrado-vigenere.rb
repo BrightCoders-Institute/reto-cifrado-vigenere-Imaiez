@@ -4,7 +4,7 @@ alphabet = 'abcdefghijklmnopqrstuvwxyz'
 # Obtiene el mensaje y la palabra clave
 message = "helloworld"
 key = "key"
-
+encrypted = ""
 # Crea array del indice para las letras del alfabeto
   letter_to_index = []
   alphabet.each_char do |letter|
@@ -27,10 +27,9 @@ key = "key"
     index_key << alphabet.index(key)
   end
 
-puts index_message.inspect
-puts "\n"
-puts index_key
-puts "\n"
+# puts index_message.inspect
+
+# puts "\n"
 # # Dividir la matriz del mensaje en pedazos de acuerdo al tamaño de la palabra clave
 if index_key.length < index_message.length
   key_repeated = (index_message.length / index_key.length.to_f).ceil
@@ -40,11 +39,29 @@ end
 # Asegura que index_key no tenga una longitud mayor a index_message
 index_key = index_key.take(index_message.length)
 
+index_cipher = []
+
+index_message.each_with_index do |value, index|
+   sum = (value + index_key[index]) % 26
+  index_cipher << sum
+end
 
 
+
+
+
+
+
+
+
+
+
+
+puts index_message.inspect
 puts ("\n")
 puts index_key.inspect
-
+puts ("\n")
+puts index_cipher.inspect
 
 
 # encrypted = ""
